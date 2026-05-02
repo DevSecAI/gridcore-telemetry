@@ -1,4 +1,4 @@
-benchmark_id: gridcore-telemetry
+demo_id: gridcore-telemetry
 corpus_version: "0.1.0"
 industry: energy
 sub_industry: smart-grid

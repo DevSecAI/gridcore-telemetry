@@ -1,8 +1,8 @@
 # Gridcore Telemetry
 
-> ⚠️ **ARKO Benchmark Application — contains intentional vulnerabilities. Do not deploy.**
+> ⚠️ **ARKO Demo Application — contains intentional vulnerabilities. Do not deploy.**
 
-Smart-meter telemetry ingestion and demand-response orchestration for the (fictional) **Gridcore** distribution system operator. Part of the [ARKO Coverage Benchmarks](https://github.com/DevSecAI/arko-benchmarks) suite.
+Smart-meter telemetry ingestion and demand-response orchestration for the (fictional) **Gridcore** distribution system operator. Part of the [ARKO Coverage Demos](https://github.com/DevSecAI/arko-benchmarks) suite.
 
 Stack: Go 1.22 · Chi · TimescaleDB · Azure (Terraform) · Kubernetes.
 
@@ -15,4 +15,4 @@ Stack: Go 1.22 · Chi · TimescaleDB · Azure (Terraform) · Kubernetes.
 
 Frameworks exercised: **NIS2**, **IEC 62443**, **NIST CSF**.
 
-See [`BENCHMARK.md`](./BENCHMARK.md).
+See [`DEMO.md`](./DEMO.md).
