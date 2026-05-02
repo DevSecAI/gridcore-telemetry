@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gridcore
+spec:
+  replicas: 2
+  selector: { matchLabels: { app: gridcore } }
+  template:
+    metadata:
+      labels: { app: gridcore }
+    spec:
+      # GRID-IAC-008: hostPID exposes the host's process namespace to the pod.
+      hostPID: true
+      containers:
+        - name: app
+          image: gridcore/api:latest
+          ports: [{ containerPort: 8080 }]
+          env:
+            - name: DB_DSN
+              value: "postgres://gridadmin:Gridcore2024!@psql-gridcore-prod.postgres.database.azure.com:5432/gridcore?sslmode=disable"
+          # GRID-IAC-007: no resources.requests / limits defined.

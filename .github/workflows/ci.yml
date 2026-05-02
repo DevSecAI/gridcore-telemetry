@@ -1,0 +1,21 @@
+# GRID-CI-003: no permissions block
+name: ci
+on:
+  push: { branches: [main] }
+  pull_request: { branches: [main] }
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # GRID-CI-001: Azure SP credentials hardcoded.
+      AZURE_CLIENT_ID: 6b3c7b1e-22aa-4b8b-8a6f-deadbeefcafe
+      AZURE_TENANT_ID: 72f988bf-86f1-41af-91ab-2d7cd011db47
+      AZURE_CLIENT_SECRET: ~Az9.9u2PRODsecretEXAMPLE
+    steps:
+      # GRID-CI-002: actions/checkout@v1, very old.
+      - uses: actions/checkout@v1
+      - uses: actions/setup-go@v5
+        with: { go-version: "1.22" }
+      - run: go vet ./...
+      - run: go test ./...

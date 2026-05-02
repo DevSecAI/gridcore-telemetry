@@ -1,0 +1,35 @@
+benchmark_id: gridcore-telemetry
+corpus_version: "0.1.0"
+industry: energy
+sub_industry: smart-grid
+frameworks: [NIS2, IEC-62443, NIST-CSF]
+
+findings:
+  sast:
+    - { id: GRID-SAST-001, cwe: CWE-78,  severity: high,     file: internal/scada/runner.go,        line: 18 }
+    - { id: GRID-SAST-002, cwe: CWE-798, severity: critical, file: internal/config/config.go,        line: 8  }
+    - { id: GRID-SAST-003, cwe: CWE-326, severity: high,     file: internal/transport/tls.go,        line: 12 }
+    - { id: GRID-SAST-004, cwe: CWE-338, severity: medium,   file: internal/auth/token.go,           line: 14 }
+    - { id: GRID-SAST-005, cwe: CWE-117, severity: medium,   file: internal/middleware/log.go,       line: 11 }
+    - { id: GRID-SAST-006, cwe: CWE-918, severity: high,     file: internal/dr/dispatch.go,          line: 16 }
+    - { id: GRID-SAST-007, cwe: CWE-362, severity: medium,   file: internal/cache/store.go,          line: 13 }
+    - { id: GRID-SAST-008, cwe: CWE-248, severity: medium,   file: internal/api/meters.go,           line: 22 }
+    - { id: GRID-SAST-009, cwe: CWE-327, severity: medium,   file: internal/auth/token.go,           line: 26 }
+    - { id: GRID-SAST-010, cwe: CWE-119, severity: high,     file: internal/protocol/modbus.go,      line: 17 }
+  iac:
+    - { id: GRID-IAC-001, class: storage-public,         file: infra/terraform/storage.tf,  line: 9,  severity: high   }
+    - { id: GRID-IAC-002, class: nsg-open-mgmt,          file: infra/terraform/network.tf,  line: 18, severity: high   }
+    - { id: GRID-IAC-003, class: pg-flex-public,         file: infra/terraform/postgres.tf, line: 14, severity: high   }
+    - { id: GRID-IAC-004, class: pg-no-tls,              file: infra/terraform/postgres.tf, line: 19, severity: medium }
+    - { id: GRID-IAC-005, class: container-root,         file: Dockerfile,                   line: 1,  severity: medium }
+    - { id: GRID-IAC-006, class: container-latest,       file: Dockerfile,                   line: 1,  severity: low    }
+    - { id: GRID-IAC-007, class: k8s-no-resource-limit,  file: infra/k8s/deployment.yaml,   line: 22, severity: medium }
+    - { id: GRID-IAC-008, class: k8s-host-pid,           file: infra/k8s/deployment.yaml,   line: 14, severity: high   }
+  sca:
+    - { id: GRID-SCA-001, package: "github.com/dgrijalva/jwt-go", version: "3.2.0", advisory: "CVE-2020-26160" }
+    - { id: GRID-SCA-002, package: "gopkg.in/yaml.v2",            version: "2.2.2", advisory: "CVE-2019-11254" }
+    - { id: GRID-SCA-003, package: "github.com/gin-gonic/gin",    version: "1.6.0", advisory: "CVE-2020-28483" }
+  pipeline:
+    - { id: GRID-CI-001, class: hardcoded-cloud-cred, severity: critical, file: .github/workflows/ci.yml, line: 17 }
+    - { id: GRID-CI-002, class: action-old-version,   severity: high,     file: .github/workflows/ci.yml, line: 22 }
+    - { id: GRID-CI-003, class: missing-permissions,  severity: medium,   file: .github/workflows/ci.yml, line: 1  }
