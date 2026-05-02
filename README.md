@@ -2,7 +2,7 @@
 
 > ⚠️ **ARKO Demo Application — contains intentional vulnerabilities. Do not deploy.**
 
-Smart-meter telemetry ingestion and demand-response orchestration for the (fictional) **Gridcore** distribution system operator. Part of the [ARKO Coverage Demos](https://github.com/DevSecAI/arko-benchmarks) suite.
+Smart-meter telemetry ingestion and demand-response orchestration for the (fictional) **Gridcore** distribution system operator. Part of the [ARKO Coverage Demos](https://github.com/DevSecAI/arko-demos) suite.
 
 Stack: Go 1.22 · Chi · TimescaleDB · Azure (Terraform) · Kubernetes.
 
